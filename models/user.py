@@ -1,0 +1,1 @@
+email = Column(String(255), nullable=False, default="", server_default="")
