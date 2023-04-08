@@ -5,6 +5,7 @@ from blog.views.articles import articles_app
 from flask_migrate import Migrate
 import os
 from blog.security import flask_bcrypt
+from blog.views.authors import authors_app
 
 
 app = Flask(__name__)
@@ -14,6 +15,7 @@ cfg_name = os.environ.get("CONFIG_NAME") or "ProductionConfig"
 app.config.from_object(f"blog.configs.{cfg_name}")
 migrate = Migrate(app, db)
 flask_bcrypt.init_app(app)
+app.register_blueprint(authors_app, url_prefix="/authors")
 
 
 @app.route("/")
