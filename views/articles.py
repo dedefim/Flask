@@ -25,14 +25,6 @@ def article_detals(article_id):
     return render_template("articles/details.html", article=article)
 
 
-@articles_app.route("/<int:article_id>/", endpoint="details")
-def article_detals(article_id):
-    article = Article.query.filter_by(id=article_id).options(
-        joinedload(Article.tags) # подгружаем связанные теги!
-    ).one_or_none()
-    if article is None:
-        raise NotFound
-    return render_template("articles/details.html", article=article)
 
 
 @articles_app.route("/create/", methods=["GET", "POST"], endpoint="create")
@@ -48,4 +40,12 @@ def create_article():
             for tag in selected_tags:
                 article.tags.append(tag)
 
+@articles_app.route("/<int:article_id>/", endpoint="details")
+def article_detals(article_id):
+    article = Article.query.filter_by(id=article_id).options(
+        joinedload(Article.tags) # подгружаем связанные теги!
+    ).one_or_none()
+    if article is None:
+        raise NotFound
+    return render_template("articles/details.html", article=article)
 
