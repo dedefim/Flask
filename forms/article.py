@@ -12,3 +12,4 @@ class CreateArticleForm(FlaskForm):
         [validators.DataRequired()],
     )
     submit = SubmitField("Publish")
+    tags = SelectMultipleField("Tags", coerce=int)

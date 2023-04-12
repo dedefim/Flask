@@ -24,5 +24,6 @@
             {% endfor %}
             {{ form.submit(class="btn btn-primary my-3") }}
         </form>
+    {% for field_name in ['title', 'body', 'tags'] %}
     </div>
 {% endblock %}
