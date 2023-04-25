@@ -67,6 +67,9 @@ aria-expanded="false" aria-label="Toggle navigation">
 </nav>
 <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}">
 </script>
-% for (endpoint, label) in [('users_app.list', 'Users'), ('articles_app.list', 'Articles')] %}
+% for (endpoint, label) in [('users_app.list', 'Users'),
+    ('articles_app.list', 'Articles')
+    ('authors_app.list', 'Authors'),
+    ] %}
 </body>
 </html>
